@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+
+\bibitem{2020UNITER}
+Yen~Chun Chen, Linjie Li, Licheng Yu, Ahmed El~Kholy, Faisal Ahmed, Zhe Gan,
+  Yu~Cheng, and Jingjing Liu.
+\newblock Uniter: Universal image-text representation learning.
+\newblock In {\em European Conference on Computer Vision}, 2020.
+
+\bibitem{dosovitskiy2020image}
+Alexey Dosovitskiy.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock {\em arXiv preprint arXiv:2010.11929}, 2020.
+
+\bibitem{lu2019vilbert}
+Jiasen Lu, Dhruv Batra, Devi Parikh, and Stefan Lee.
+\newblock Vilbert: Pretraining task-agnostic visiolinguistic representations
+  for vision-and-language tasks.
+\newblock {\em Advances in neural information processing systems}, 32, 2019.
+
+\bibitem{radford2021learning}
+Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh,
+  Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark,
+  et~al.
+\newblock Learning transferable visual models from natural language
+  supervision.
+\newblock In {\em International conference on machine learning}, pages
+  8748--8763. PMLR, 2021.
+
+\bibitem{tan2019lxmert}
+Hao Tan and Mohit Bansal.
+\newblock Lxmert: Learning cross-modality encoder representations from
+  transformers.
+\newblock {\em arXiv preprint arXiv:1908.07490}, 2019.
+
+\bibitem{vaswani2017attention}
+A~Vaswani.
+\newblock Attention is all you need.
+\newblock {\em Advances in Neural Information Processing Systems}, 2017.
+
+\bibitem{10123038}
+Peng Xu, Xiatian Zhu, and David~A. Clifton.
+\newblock Multimodal learning with transformers: A survey.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  45(10):12113--12132, 2023.
+
+\end{thebibliography}

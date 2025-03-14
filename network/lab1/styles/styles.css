@@ -1,0 +1,139 @@
+.header {
+    position: fixed;
+    right: 0;
+    left: 0;
+    height: 100px;
+}
+.logo{
+    float: left;
+}
+.header h1 {
+    color:black;
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+body {
+    /* background-image: url("") */
+    background-color: rgb(226, 240, 240);
+}
+.box{
+    display: flex;
+}
+.content{
+    top:100px;
+    right: 0;
+    left:25%;
+    width: 79%;
+    height: 80%;
+    /* bottom:; */
+    position:fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: flex-start; */
+    color: dimgray;
+}
+.link{
+    text-align:center;
+    width: 100%;
+    left:40%;
+    /* position:absolute; */
+    /* left: 70%; */
+}
+.imageroll{
+    /* float: right; */
+    /* margin-right:10%; */
+    width:100%;
+    height: 400px;
+    overflow: hidden;
+    left:25%;
+    position: sticky;
+    /* background-color: aliceblue; */
+    
+}
+.imageset{
+    left:15%;
+    /* text-align: center; */
+    width:60%;
+    height: 100%;
+    position:absolute;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.subcontent p{
+    padding-right: 50px;
+    /* overflow: scroll; */
+    width: 90%;
+}
+.navi{
+    height: 100%;
+    width: 21%;
+    position: fixed;
+    top:100px;
+    left: 0;
+    background-color:azure;
+    padding-top: 20px;
+}
+
+.navi ul {
+    list-style-type: none;
+    padding: 0;
+}
+.navi ul li a {
+    padding: 10px 25px;
+    text-decoration: none;
+    /* text-align: center; */
+    
+    
+    font-size: 30px;
+    color: rgba(11, 37, 101, 0.726);
+    display: block;
+}
+.line {
+    right: 5px;
+    border: 1px solid rgba(81, 74, 74, 0.832);
+    width: 90%;
+  }
+.footer p{
+    color: grey;
+    right:30%;
+    /* bottom: 10%; */
+    /* text-align: center; */
+}
+.subcontent ul {
+    list-style-type: none;
+    /* right: 30%; */
+    /* display: block; */
+    /* margin: 15px; */
+}
+.subcontent ul li{
+    margin-bottom: 15px;
+    
+}
+.subcontent ul a:link{
+    text-decoration: none;
+    color:cornflowerblue;
+}
+.gif {
+    position: fixed;
+    /* z-index: -1; */
+    bottom: 15%;
+
+}
+.gif2{
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
+.student{
+    /* object-position: 15%; */
+   /* width: 15%; */
+   /* width:"650px"; height:"40?0px"; */
+   /* left: 15%; */
+   text-align: center;
+   /* float: right; */
+   /* position: absolute; */
+   /* right: 15%; */
+}

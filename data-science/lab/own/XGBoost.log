@@ -1,0 +1,21 @@
+2024-12-15 04:45:08 - INFO - ********** Logging initialized **********
+2024-12-15 04:45:12 - INFO - {'learning_rate': 0.01, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.6, 'colsample_bytree': 0.6, 'reg_alpha': 0.5, 'reg_lambda': 2, 'random_state': 42, 'tree_method': 'gpu_hist'}
+2024-12-15 04:45:14 - INFO - Fold 1 - Train QWK: 0.8091, Validation QWK: 0.4857, Validation Precision: 0.6398
+2024-12-15 04:45:15 - INFO - Fold 2 - Train QWK: 0.8075, Validation QWK: 0.4723, Validation Precision: 0.6060
+2024-12-15 04:45:16 - INFO - Fold 3 - Train QWK: 0.8057, Validation QWK: 0.4978, Validation Precision: 0.6377
+2024-12-15 04:45:17 - INFO - Fold 4 - Train QWK: 0.8016, Validation QWK: 0.4744, Validation Precision: 0.6123
+2024-12-15 04:45:18 - INFO - Fold 5 - Train QWK: 0.8116, Validation QWK: 0.4731, Validation Precision: 0.6297
+2024-12-15 04:53:31 - INFO - ********** Logging initialized **********
+2024-12-15 04:53:35 - INFO - {'learning_rate': 0.01, 'max_depth': 7, 'n_estimators': 300, 'subsample': 0.6, 'colsample_bytree': 0.6, 'reg_alpha': 0.5, 'reg_lambda': 2, 'random_state': 42, 'tree_method': 'gpu_hist'}
+2024-12-15 04:53:37 - INFO - Fold 1 - Train QWK: 0.7929, Validation QWK: 0.5482, Validation Precision: 0.6692
+2024-12-15 04:53:38 - INFO - Fold 2 - Train QWK: 0.8027, Validation QWK: 0.5020, Validation Precision: 0.6600
+2024-12-15 04:53:39 - INFO - Fold 3 - Train QWK: 0.8021, Validation QWK: 0.4778, Validation Precision: 0.6141
+2024-12-15 04:53:40 - INFO - Fold 4 - Train QWK: 0.8048, Validation QWK: 0.4788, Validation Precision: 0.6401
+2024-12-15 04:53:41 - INFO - Fold 5 - Train QWK: 0.8122, Validation QWK: 0.3999, Validation Precision: 0.5905
+2024-12-15 04:58:26 - INFO - ********** Logging initialized **********
+2024-12-15 04:58:30 - INFO - {'learning_rate': 0.05, 'max_depth': 6, 'n_estimators': 200, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 1, 'reg_lambda': 5, 'random_state': 42, 'tree_method': 'gpu_hist'}
+2024-12-15 04:58:31 - INFO - Fold 1 - Train QWK: 0.9333, Validation QWK: 0.5754, Validation Precision: 0.6861
+2024-12-15 04:58:32 - INFO - Fold 2 - Train QWK: 0.9413, Validation QWK: 0.5408, Validation Precision: 0.6631
+2024-12-15 04:58:33 - INFO - Fold 3 - Train QWK: 0.9402, Validation QWK: 0.4857, Validation Precision: 0.6248
+2024-12-15 04:58:33 - INFO - Fold 4 - Train QWK: 0.9488, Validation QWK: 0.5280, Validation Precision: 0.6631
+2024-12-15 04:58:34 - INFO - Fold 5 - Train QWK: 0.9469, Validation QWK: 0.4816, Validation Precision: 0.6104

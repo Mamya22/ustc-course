@@ -1,0 +1,21 @@
+2024-12-15 09:45:46 - INFO - Fold 1 - Train QWK: 0.8914, Validation QWK: 0.4197
+2024-12-15 09:45:53 - INFO - Fold 2 - Train QWK: 0.8969, Validation QWK: 0.3727
+2024-12-15 09:46:00 - INFO - Fold 3 - Train QWK: 0.8945, Validation QWK: 0.4056
+2024-12-15 09:46:07 - INFO - Fold 4 - Train QWK: 0.8938, Validation QWK: 0.4080
+2024-12-15 09:46:14 - INFO - Fold 5 - Train QWK: 0.8968, Validation QWK: 0.3744
+2024-12-15 09:46:14 - INFO - Mean Train QWK --> 0.8947
+2024-12-15 09:46:14 - INFO - Mean Validation QWK ---> 0.3961
+2024-12-15 09:46:17 - INFO - Fold 1 - Train QWK: 0.8768, Validation QWK: 0.3875
+2024-12-15 09:46:19 - INFO - Fold 2 - Train QWK: 0.8820, Validation QWK: 0.4642
+2024-12-15 09:46:22 - INFO - Fold 3 - Train QWK: 0.8754, Validation QWK: 0.3252
+2024-12-15 09:46:24 - INFO - Fold 4 - Train QWK: 0.8770, Validation QWK: 0.3945
+2024-12-15 09:46:26 - INFO - Fold 5 - Train QWK: 0.8830, Validation QWK: 0.3856
+2024-12-15 09:46:26 - INFO - Mean Train QWK --> 0.8789
+2024-12-15 09:46:26 - INFO - Mean Validation QWK ---> 0.3914
+2024-12-15 09:46:31 - INFO - Fold 1 - Train QWK: 0.8977, Validation QWK: 0.4075
+2024-12-15 09:46:36 - INFO - Fold 2 - Train QWK: 0.9028, Validation QWK: 0.3523
+2024-12-15 09:46:41 - INFO - Fold 3 - Train QWK: 0.9079, Validation QWK: 0.4428
+2024-12-15 09:46:46 - INFO - Fold 4 - Train QWK: 0.9006, Validation QWK: 0.3864
+2024-12-15 09:46:50 - INFO - Fold 5 - Train QWK: 0.8963, Validation QWK: 0.4152
+2024-12-15 09:46:50 - INFO - Mean Train QWK --> 0.9011
+2024-12-15 09:46:50 - INFO - Mean Validation QWK ---> 0.4008
