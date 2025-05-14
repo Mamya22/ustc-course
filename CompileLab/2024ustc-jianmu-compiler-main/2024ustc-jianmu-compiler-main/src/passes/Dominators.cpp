@@ -1,5 +1,8 @@
 #include "Dominators.hpp"
+#include "BasicBlock.hpp"
 #include "Function.hpp"
+#include "logging.hpp"
+#include <cstddef>
 #include <fstream>
 #include <vector>
 
@@ -14,6 +17,9 @@ void Dominators::run() {
         if(f->is_declaration())
             continue;
         run_on_func(f);
+        print_dominance_frontier(f);
+        // dump_dominator_tree(f);
+        // dump_cfg(f);
     }
 }
 
@@ -43,6 +49,7 @@ void Dominators::run_on_func(Function *f) {
     create_dominance_frontier(f);
     create_dom_tree_succ(f);
     create_dom_dfs_order(f);
+    print_idom(f);
 }
 
 /**
@@ -107,7 +114,38 @@ void Dominators::dfs(BasicBlock *bb, std::set<BasicBlock *> &visited) {
  */
 void Dominators::create_idom(Function *f) {
     // TODO 分析得到 f 中各个基本块的 idom
-    throw "Unimplemented create_idom";
+    auto entryBlock = f->get_entry_block();
+    // 将入口块的直接支配者设置为自身
+    idom_[entryBlock] = entryBlock;
+    LOG(DEBUG) << idom_[entryBlock]->print();
+    // 先计算支配结点
+    // 若是直接支配节点，则除自身外的其他支配结点均在其直接支配节点的支配节点中
+    bool changed = true;
+    // 获取函数中基本块的数量
+    auto bbNum = post_order_vec_.size();
+
+    // intersect 返回最近公共支配点，则对一个基本块，找到其所有preblock的最近公共块
+    // 块是从0开始编码的
+    while (changed) {
+        changed = false;
+        // in reverse postorder
+        for(int i = bbNum - 2; i >= 0; i--){
+            auto block = post_order_vec_[i];
+            // int dom_temp = -1;
+            BasicBlock *new_idom = block->get_pre_basic_blocks().front();
+            // 遍历前驱block
+            for(auto &pred_block : block->get_pre_basic_blocks()){
+                if(idom_[pred_block] != nullptr){
+                    new_idom = intersect(new_idom, pred_block);
+                }
+            }
+            if(idom_[block] != new_idom){
+                idom_[block] = new_idom;
+                changed = true;
+            }
+        }
+    }
+    // throw "Unimplemented create_idom";
 }
 
 /**
@@ -120,7 +158,25 @@ void Dominators::create_idom(Function *f) {
  */
 void Dominators::create_dominance_frontier(Function *f) {
     // TODO 分析得到 f 中各个基本块的支配边界集合
-    throw "Unimplemented create_dominance_frontier";
+    // dom_frontier_ 代表支配边界
+    
+    for(auto &block : f->get_basic_blocks()){
+        for(auto &pred_block : block.get_pre_basic_blocks()){
+            if(idom_[&block] == pred_block){
+                continue;
+            }
+            else{
+                // dom_frontier_[pred_block].insert(block);
+                auto temp = pred_block;
+                while (idom_[&block] != temp) {
+                    dom_frontier_[temp].insert(&block);
+                    // dom_frontier_[pred_block].emplace(&block);
+                    temp = idom_[temp];                    
+                }
+            }
+        }
+    }
+    // throw "Unimplemented create_dominance_frontier";
 
 }
 
@@ -133,7 +189,15 @@ void Dominators::create_dominance_frontier(Function *f) {
  */
 void Dominators::create_dom_tree_succ(Function *f) {
     // TODO 分析得到 f 中各个基本块的支配树后继
-    throw "Unimplemented create_dom_tree_succ";
+    // dom_tree_succ_blocks_
+    for(auto &block : f->get_basic_blocks()){
+        if(&block == f->get_entry_block()){
+            continue;
+        }
+        auto dom = idom_[&block];
+        dom_tree_succ_blocks_[dom].emplace(&block);
+    }
+    // throw "Unimplemented create_dom_tree_succ";
 }
 
 /**
@@ -164,7 +228,7 @@ void Dominators::create_dom_dfs_order(Function *f) {
     };
     dfs(f->get_entry_block());
     dom_post_order_ =
-        std::vector(dom_dfs_order_.rbegin(), dom_dfs_order_.rend());
+        std::vector<BasicBlock*>(dom_dfs_order_.rbegin(), dom_dfs_order_.rend());
 }
 
 /**
