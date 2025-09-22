@@ -1,0 +1,17 @@
+program
+--fun-declaration: foo
+----param: a
+----param: b[]
+----compound-stmt
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 1
+--fun-declaration: main
+----compound-stmt
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 0

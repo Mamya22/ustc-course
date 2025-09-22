@@ -1,0 +1,32 @@
+program
+--var-declaration: a
+--fun-declaration: GlobalAssign
+----compound-stmt
+------expression-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 10
+------return-stmt: void
+--fun-declaration: main
+----compound-stmt
+------var-declaration: a
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: GlobalAssign()
+------expression-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 20
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: a

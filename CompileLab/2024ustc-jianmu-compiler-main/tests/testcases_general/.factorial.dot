@@ -1,0 +1,9 @@
+digraph "CFG for 'factorial' function" {
+	label="CFG for 'factorial' function";
+
+	Node0x10ce0d60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{label_entry:\l  %op3 = icmp eq i32 %arg0, 0\l  %op4 = zext i1 %op3 to i32\l  %op5 = icmp sgt i32 %op4, 0\l  br i1 %op5, label %label6, label %label8\l|{<s0>T|<s1>F}}"];
+	Node0x10ce0d60:s0 -> Node0x10ce1530;
+	Node0x10ce0d60:s1 -> Node0x10ce15a0;
+	Node0x10ce1530 [shape=record,color="#b70d28ff", style=filled, fillcolor="#e8765c70",label="{label6:                                           \l  ret i32 1\l}"];
+	Node0x10ce15a0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7b39670",label="{label8:                                           \l  %op11 = sub i32 %arg0, 1\l  %op12 = call i32 @factorial(i32 %op11)\l  %op13 = mul i32 %arg0, %op12\l  ret i32 %op13\l}"];
+}

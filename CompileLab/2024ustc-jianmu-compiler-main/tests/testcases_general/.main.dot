@@ -1,0 +1,5 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x10ce1bd0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{label_entry:\l  %op1 = call i32 @factorial(i32 10)\l  ret i32 %op1\l}"];
+}

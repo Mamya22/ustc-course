@@ -1,0 +1,11 @@
+program
+--fun-declaration: main
+----compound-stmt
+------var-declaration: i
+------var-declaration: j
+------var-declaration: v
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 0

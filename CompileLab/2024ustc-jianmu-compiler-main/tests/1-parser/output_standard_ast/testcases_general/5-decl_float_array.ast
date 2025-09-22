@@ -1,0 +1,6 @@
+program
+--fun-declaration: main
+----compound-stmt
+------var-declaration: a[]
+--------num (int): 10
+------return-stmt: void

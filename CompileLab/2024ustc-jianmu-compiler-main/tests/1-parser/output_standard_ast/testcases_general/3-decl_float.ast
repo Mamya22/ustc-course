@@ -1,0 +1,5 @@
+program
+--fun-declaration: main
+----compound-stmt
+------var-declaration: a
+------return-stmt: void

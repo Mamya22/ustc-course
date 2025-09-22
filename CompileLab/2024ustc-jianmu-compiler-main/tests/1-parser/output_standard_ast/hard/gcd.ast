@@ -1,0 +1,105 @@
+program
+--fun-declaration: gcd
+----param: u
+----param: v
+----compound-stmt
+------selection-stmt
+--------simple-expression: ==
+----------additive-expression
+------------term
+--------------var: v
+----------additive-expression
+------------term
+--------------num (int): 0
+--------return-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: u
+--------return-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: gcd()
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: v
+------------------simple-expression
+--------------------additive-expression: -
+----------------------additive-expression
+------------------------term
+--------------------------var: u
+----------------------term: *
+------------------------term: /
+--------------------------term
+----------------------------var: u
+--------------------------var: v
+------------------------var: v
+--fun-declaration: main
+----compound-stmt
+------var-declaration: x
+------var-declaration: y
+------var-declaration: temp
+------expression-stmt
+--------assign-expression
+----------var: x
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 72
+------expression-stmt
+--------assign-expression
+----------var: y
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 18
+------selection-stmt
+--------simple-expression: <
+----------additive-expression
+------------term
+--------------var: x
+----------additive-expression
+------------term
+--------------var: y
+--------compound-stmt
+----------expression-stmt
+------------assign-expression
+--------------var: temp
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: x
+----------expression-stmt
+------------assign-expression
+--------------var: x
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: y
+----------expression-stmt
+------------assign-expression
+--------------var: y
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: temp
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: gcd()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: x
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: y
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 0

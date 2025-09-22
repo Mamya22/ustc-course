@@ -1,0 +1,21 @@
+program
+--fun-declaration: main
+----compound-stmt
+------var-declaration: array[]
+--------num (int): 1
+------expression-stmt
+--------assign-expression
+----------var: array[]
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------num (int): 1
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 0
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 0

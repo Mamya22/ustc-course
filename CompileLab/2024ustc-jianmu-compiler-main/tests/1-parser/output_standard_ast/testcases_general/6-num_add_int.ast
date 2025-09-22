@@ -1,0 +1,19 @@
+program
+--fun-declaration: main
+----compound-stmt
+------var-declaration: a
+------expression-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression: +
+--------------additive-expression
+----------------term
+------------------num (int): 1000
+--------------term
+----------------num (int): 234
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: a

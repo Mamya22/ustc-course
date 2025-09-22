@@ -1,0 +1,1223 @@
+==========./testcases/functional-cases/0-io.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+1234								1234
+0								0
+==========./testcases/functional-cases/1-return.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+111								111
+111								111
+==========./testcases/functional-cases/2-calculate.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+123								123
+==========./testcases/functional-cases/3-output.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+11								11
+22222								22222
+0								0
+==========./testcases/functional-cases/4-if.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+label11: label_entry
+label17: label_entry
+label18: label_entry
+label24: label11
+label26: label11
+label27: label11
+label29: label18
+label31: label18
+label32: label18
+Dominance Frontier of function main:
+label_entry: null
+label11: label17
+label17: null
+label18: label17
+label24: label26
+label26: label17
+label27: label26
+label29: label31
+label31: label17
+label32: label31
+Immediate dominance of function main:
+label_entry: label_entry
+label11: label_entry
+label17: label_entry
+label18: label_entry
+label24: label11
+label26: label11
+label27: label11
+label29: label18
+label31: label18
+label32: label18
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+label11: label_entry
+label17: label_entry
+label18: label_entry
+label24: label11
+label26: label11
+label27: label11
+label29: label18
+label31: label18
+label32: label18
+Dominance Frontier of function main:
+label_entry: null
+label11: label17
+label17: null
+label18: label17
+label24: label26
+label26: label17
+label27: label26
+label29: label31
+label31: label17
+label32: label31
+Immediate dominance of function main:
+label_entry: label_entry
+label11: label_entry
+label17: label_entry
+label18: label_entry
+label24: label11
+label26: label11
+label27: label11
+label29: label18
+label31: label18
+label32: label18
+Loop Detection Result:
+33								33
+0								0
+==========./testcases/functional-cases/5-while.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label15: label4
+Dominance Frontier of function main:
+label_entry: null
+label4: label4
+label10: label4
+label15: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label15: label4
+Loop Detection Result:
+Loop header: label4
+Loop blocks: label4 label10 
+Sub loops: 
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label15: label4
+Dominance Frontier of function main:
+label_entry: null
+label4: label4
+label10: label4
+label15: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label15: label4
+Loop Detection Result:
+Loop header: label4
+Loop blocks: label4 label10 
+Sub loops: 
+0								0
+1								1
+2								2
+3								3
+4								4
+5								5
+6								6
+7								7
+8								8
+9								9
+0								0
+==========./testcases/functional-cases/6-array.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label5: label_entry
+label8: label_entry
+label10: label8
+label11: label8
+label14: label8
+label16: label14
+label17: label14
+label20: label14
+label22: label20
+label23: label20
+label26: label20
+label28: label26
+label29: label26
+label32: label26
+label34: label32
+label35: label32
+label38: label32
+Dominance Frontier of function main:
+label_entry: null
+label4: label8
+label5: label8
+label8: null
+label10: label14
+label11: label14
+label14: null
+label16: label20
+label17: label20
+label20: null
+label22: label26
+label23: label26
+label26: null
+label28: label32
+label29: label32
+label32: null
+label34: label38
+label35: label38
+label38: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label5: label_entry
+label8: label_entry
+label10: label8
+label11: label8
+label14: label8
+label16: label14
+label17: label14
+label20: label14
+label22: label20
+label23: label20
+label26: label20
+label28: label26
+label29: label26
+label32: label26
+label34: label32
+label35: label32
+label38: label32
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label5: label_entry
+label8: label_entry
+label10: label8
+label11: label8
+label14: label8
+label16: label14
+label17: label14
+label20: label14
+label22: label20
+label23: label20
+label26: label20
+label28: label26
+label29: label26
+label32: label26
+label34: label32
+label35: label32
+label38: label32
+Dominance Frontier of function main:
+label_entry: null
+label4: label8
+label5: label8
+label8: null
+label10: label14
+label11: label14
+label14: null
+label16: label20
+label17: label20
+label20: null
+label22: label26
+label23: label26
+label26: null
+label28: label32
+label29: label32
+label32: null
+label34: label38
+label35: label38
+label38: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label5: label_entry
+label8: label_entry
+label10: label8
+label11: label8
+label14: label8
+label16: label14
+label17: label14
+label20: label14
+label22: label20
+label23: label20
+label26: label20
+label28: label26
+label29: label26
+label32: label26
+label34: label32
+label35: label32
+label38: label32
+Loop Detection Result:
+11								11
+22								22
+33								33
+0								0
+==========./testcases/functional-cases/7-function.cminus==========
+Immediate dominance of function min:
+label_entry: label_entry
+label9: label_entry
+label11: null
+label12: label_entry
+Dominance Frontier of function min:
+label_entry: null
+label9: null
+label11: null
+label12: null
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function min:
+label_entry: label_entry
+label9: label_entry
+label12: label_entry
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function min:
+label_entry: label_entry
+label9: label_entry
+label11: null
+label12: label_entry
+Dominance Frontier of function min:
+label_entry: null
+label9: null
+label11: null
+label12: null
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function min:
+label_entry: label_entry
+label9: label_entry
+label12: label_entry
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+11								11
+22								22
+11								11
+0								0
+==========./testcases/functional-cases/8-store.cminus==========
+Immediate dominance of function store:
+label_entry: label_entry
+label10: label_entry
+label11: label_entry
+label14: label_entry
+Dominance Frontier of function store:
+label_entry: null
+label10: label14
+label11: label14
+label14: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label18: label4
+label21: label18
+label26: label21
+label30: label21
+label32: label26
+label33: label26
+label36: label26
+Dominance Frontier of function main:
+label_entry: null
+label4: label4
+label9: label4
+label18: null
+label21: label21
+label26: label21
+label30: null
+label32: label36
+label33: label36
+label36: label21
+Immediate dominance of function store:
+label_entry: label_entry
+label10: label_entry
+label11: label_entry
+label14: label_entry
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label18: label4
+label21: label18
+label26: label21
+label30: label21
+label32: label26
+label33: label26
+label36: label26
+Loop Detection Result:
+Loop header: label21
+Loop blocks: label21 label36 label32 label26 label33 
+Sub loops: 
+Loop header: label4
+Loop blocks: label4 label9 
+Sub loops: 
+Immediate dominance of function store:
+label_entry: label_entry
+label10: label_entry
+label11: label_entry
+label14: label_entry
+Dominance Frontier of function store:
+label_entry: null
+label10: label14
+label11: label14
+label14: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label18: label4
+label21: label18
+label26: label21
+label30: label21
+label32: label26
+label33: label26
+label36: label26
+Dominance Frontier of function main:
+label_entry: null
+label4: label4
+label9: label4
+label18: null
+label21: label21
+label26: label21
+label30: null
+label32: label36
+label33: label36
+label36: label21
+Immediate dominance of function store:
+label_entry: label_entry
+label10: label_entry
+label11: label_entry
+label14: label_entry
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label18: label4
+label21: label18
+label26: label21
+label30: label21
+label32: label26
+label33: label26
+label36: label26
+Loop Detection Result:
+Loop header: label21
+Loop blocks: label21 label36 label32 label26 label33 
+Sub loops: 
+Loop header: label4
+Loop blocks: label4 label9 
+Sub loops: 
+90								90
+0								0
+==========./testcases/functional-cases/9-fibonacci.cminus==========
+Immediate dominance of function fibonacci:
+label_entry: label_entry
+label6: label_entry
+label7: null
+label8: label_entry
+label13: label8
+label14: null
+label15: label8
+Dominance Frontier of function fibonacci:
+label_entry: null
+label6: null
+label7: null
+label8: null
+label13: null
+label14: label7
+label15: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label16: label4
+Dominance Frontier of function main:
+label_entry: null
+label4: label4
+label10: label4
+label16: null
+Immediate dominance of function fibonacci:
+label_entry: label_entry
+label6: label_entry
+label8: label_entry
+label13: label8
+label15: label8
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label16: label4
+Loop Detection Result:
+Loop header: label4
+Loop blocks: label4 label10 
+Sub loops: 
+Immediate dominance of function fibonacci:
+label_entry: label_entry
+label6: label_entry
+label7: null
+label8: label_entry
+label13: label8
+label14: null
+label15: label8
+Dominance Frontier of function fibonacci:
+label_entry: null
+label6: null
+label7: null
+label8: null
+label13: null
+label14: label7
+label15: null
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label16: label4
+Dominance Frontier of function main:
+label_entry: null
+label4: label4
+label10: label4
+label16: null
+Immediate dominance of function fibonacci:
+label_entry: label_entry
+label6: label_entry
+label8: label_entry
+label13: label8
+label15: label8
+Immediate dominance of function main:
+label_entry: label_entry
+label4: label_entry
+label10: label4
+label16: label4
+Loop Detection Result:
+Loop header: label4
+Loop blocks: label4 label10 
+Sub loops: 
+0								0
+1								1
+1								1
+2								2
+3								3
+5								5
+8								8
+13								13
+21								21
+34								34
+0								0
+==========./testcases/functional-cases/10-float.cminus==========
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+2.850000							2.850000
+0								0
+==========./testcases/functional-cases/11-floatcall.cminus==========
+Immediate dominance of function mod:
+label_entry: label_entry
+Dominance Frontier of function mod:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function mod:
+label_entry: label_entry
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+Immediate dominance of function mod:
+label_entry: label_entry
+Dominance Frontier of function mod:
+label_entry: null
+Immediate dominance of function main:
+label_entry: label_entry
+Dominance Frontier of function main:
+label_entry: null
+Immediate dominance of function mod:
+label_entry: label_entry
+Immediate dominance of function main:
+label_entry: label_entry
+Loop Detection Result:
+0.200000							0.200000
+0								0
+==========./testcases/functional-cases/12-global.cminus==========
+Immediate dominance of function randomLCG:
+label_entry: label_entry
+Dominance Frontier of function randomLCG:
+label_entry: null
+Immediate dominance of function randBin:
+label_entry: label_entry
+label4: label_entry
+label5: null
+label6: label_entry
+Dominance Frontier of function randBin:
+label_entry: null
+label4: null
+label5: null
+label6: null
+Immediate dominance of function returnToZeroSteps:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label12: label4
+label13: label9
+label17: label9
+label25: label9
+label29: label17
+label31: label17
+Dominance Frontier of function returnToZeroSteps:
+label_entry: null
+label4: label4
+label9: label4
+label12: null
+label13: label17
+label17: label4
+label25: label17
+label29: null
+label31: label4
+Immediate dominance of function main:
+label_entry: label_entry
+label3: label_entry
+label8: label3
+label13: label3
+Dominance Frontier of function main:
+label_entry: null
+label3: label3
+label8: label3
+label13: null
+Immediate dominance of function randomLCG:
+label_entry: label_entry
+Immediate dominance of function randBin:
+label_entry: label_entry
+label4: label_entry
+label6: label_entry
+Immediate dominance of function returnToZeroSteps:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label12: label4
+label13: label9
+label17: label9
+label25: label9
+label29: label17
+label31: label17
+Immediate dominance of function main:
+label_entry: label_entry
+label3: label_entry
+label8: label3
+label13: label3
+Loop Detection Result:
+Loop header: label4
+Loop blocks: label4 label31 label17 label25 label9 label13 
+Sub loops: 
+Loop header: label3
+Loop blocks: label3 label8 
+Sub loops: 
+Immediate dominance of function randomLCG:
+label_entry: label_entry
+Dominance Frontier of function randomLCG:
+label_entry: null
+Immediate dominance of function randBin:
+label_entry: label_entry
+label4: label_entry
+label5: null
+label6: label_entry
+Dominance Frontier of function randBin:
+label_entry: null
+label4: null
+label5: null
+label6: null
+Immediate dominance of function returnToZeroSteps:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label12: label4
+label13: label9
+label17: label9
+label25: label9
+label29: label17
+label31: label17
+Dominance Frontier of function returnToZeroSteps:
+label_entry: null
+label4: label4
+label9: label4
+label12: null
+label13: label17
+label17: label4
+label25: label17
+label29: null
+label31: label4
+Immediate dominance of function main:
+label_entry: label_entry
+label3: label_entry
+label8: label3
+label13: label3
+Dominance Frontier of function main:
+label_entry: null
+label3: label3
+label8: label3
+label13: null
+Immediate dominance of function randomLCG:
+label_entry: label_entry
+Immediate dominance of function randBin:
+label_entry: label_entry
+label4: label_entry
+label6: label_entry
+Immediate dominance of function returnToZeroSteps:
+label_entry: label_entry
+label4: label_entry
+label9: label4
+label12: label4
+label13: label9
+label17: label9
+label25: label9
+label29: label17
+label31: label17
+Immediate dominance of function main:
+label_entry: label_entry
+label3: label_entry
+label8: label3
+label13: label3
+Loop Detection Result:
+Loop header: label4
+Loop blocks: label4 label31 label17 label25 label9 label13 
+Sub loops: 
+Loop header: label3
+Loop blocks: label3 label8 
+Sub loops: 
+4								4
+2								2
+2								2
+4								4
+8								8
+2								2
+2								2
+2								2
+2								2
+2								2
+6								6
+2								2
+10								10
+8								8
+4								4
+2								2
+20								20
+2								2
+2								2
+8								8
+0								0
+==========./testcases/functional-cases/13-complex.cminus==========
+Immediate dominance of function max:
+label_entry: label_entry
+label9: label_entry
+label11: null
+label12: label_entry
+Dominance Frontier of function max:
+label_entry: null
+label9: null
+label11: null
+label12: null
+Immediate dominance of function knapsack:
+label_entry: label_entry
+label9: label_entry
+label10: label_entry
+label15: label10
+label16: label10
+label22: label16
+label23: label16
+label26: label16
+label30: label26
+label36: label26
+label41: label30
+label42: label30
+label45: label30
+label46: label36
+label47: label36
+label50: label36
+label54: label50
+label60: label50
+label67: label50
+label78: label67
+label79: label67
+label82: label67
+label88: label82
+label89: label82
+label92: label82
+label96: label60
+label97: label60
+label100: label60
+Dominance Frontier of function knapsack:
+label_entry: null
+label9: null
+label10: null
+label15: null
+label16: null
+label22: label26
+label23: label26
+label26: null
+label30: null
+label36: null
+label41: label45
+label42: label45
+label45: null
+label46: label50
+label47: label50
+label50: null
+label54: label60
+label60: null
+label67: label60
+label78: label82
+label79: label82
+label82: label60
+label88: label92
+label89: label92
+label92: label60
+label96: label100
+label97: label100
+label100: null
+Immediate dominance of function main:
+label_entry: label_entry
+label5: label_entry
+label6: label_entry
+label9: label_entry
+label11: label9
+label12: label9
+label15: label9
+label17: label15
+label18: label15
+label21: label15
+label23: label21
+label24: label21
+label27: label21
+label29: label27
+label30: label27
+label33: label27
+label35: label33
+label36: label33
+label39: label33
+label41: label39
+label42: label39
+label45: label39
+label47: label45
+label48: label45
+label51: label45
+label53: label51
+label54: label51
+label57: label51
+label59: label57
+label60: label57
+label63: label57
+label64: label63
+label69: label64
+label73: label64
+label77: label69
+label78: label69
+label81: label69
+Dominance Frontier of function main:
+label_entry: null
+label5: label9
+label6: label9
+label9: null
+label11: label15
+label12: label15
+label15: null
+label17: label21
+label18: label21
+label21: null
+label23: label27
+label24: label27
+label27: null
+label29: label33
+label30: label33
+label33: null
+label35: label39
+label36: label39
+label39: null
+label41: label45
+label42: label45
+label45: null
+label47: label51
+label48: label51
+label51: null
+label53: label57
+label54: label57
+label57: null
+label59: label63
+label60: label63
+label63: null
+label64: label64
+label69: label64
+label73: null
+label77: label81
+label78: label81
+label81: label64
+Immediate dominance of function max:
+label_entry: label_entry
+label9: label_entry
+label12: label_entry
+Immediate dominance of function knapsack:
+label_entry: label_entry
+label9: label_entry
+label10: label_entry
+label15: label10
+label16: label10
+label22: label16
+label23: label16
+label26: label16
+label30: label26
+label36: label26
+label41: label30
+label42: label30
+label45: label30
+label46: label36
+label47: label36
+label50: label36
+label54: label50
+label60: label50
+label67: label50
+label78: label67
+label79: label67
+label82: label67
+label88: label82
+label89: label82
+label92: label82
+label96: label60
+label97: label60
+label100: label60
+Immediate dominance of function main:
+label_entry: label_entry
+label5: label_entry
+label6: label_entry
+label9: label_entry
+label11: label9
+label12: label9
+label15: label9
+label17: label15
+label18: label15
+label21: label15
+label23: label21
+label24: label21
+label27: label21
+label29: label27
+label30: label27
+label33: label27
+label35: label33
+label36: label33
+label39: label33
+label41: label39
+label42: label39
+label45: label39
+label47: label45
+label48: label45
+label51: label45
+label53: label51
+label54: label51
+label57: label51
+label59: label57
+label60: label57
+label63: label57
+label64: label63
+label69: label64
+label73: label64
+label77: label69
+label78: label69
+label81: label69
+Loop Detection Result:
+Loop header: label64
+Loop blocks: label64 label81 label77 label69 label78 
+Sub loops: 
+Immediate dominance of function max:
+label_entry: label_entry
+label9: label_entry
+label11: null
+label12: label_entry
+Dominance Frontier of function max:
+label_entry: null
+label9: null
+label11: null
+label12: null
+Immediate dominance of function knapsack:
+label_entry: label_entry
+label9: label_entry
+label10: label_entry
+label15: label10
+label16: label10
+label22: label16
+label23: label16
+label26: label16
+label30: label26
+label36: label26
+label41: label30
+label42: label30
+label45: label30
+label46: label36
+label47: label36
+label50: label36
+label54: label50
+label60: label50
+label67: label50
+label78: label67
+label79: label67
+label82: label67
+label88: label82
+label89: label82
+label92: label82
+label96: label60
+label97: label60
+label100: label60
+Dominance Frontier of function knapsack:
+label_entry: null
+label9: null
+label10: null
+label15: null
+label16: null
+label22: label26
+label23: label26
+label26: null
+label30: null
+label36: null
+label41: label45
+label42: label45
+label45: null
+label46: label50
+label47: label50
+label50: null
+label54: label60
+label60: null
+label67: label60
+label78: label82
+label79: label82
+label82: label60
+label88: label92
+label89: label92
+label92: label60
+label96: label100
+label97: label100
+label100: null
+Immediate dominance of function main:
+label_entry: label_entry
+label5: label_entry
+label6: label_entry
+label9: label_entry
+label11: label9
+label12: label9
+label15: label9
+label17: label15
+label18: label15
+label21: label15
+label23: label21
+label24: label21
+label27: label21
+label29: label27
+label30: label27
+label33: label27
+label35: label33
+label36: label33
+label39: label33
+label41: label39
+label42: label39
+label45: label39
+label47: label45
+label48: label45
+label51: label45
+label53: label51
+label54: label51
+label57: label51
+label59: label57
+label60: label57
+label63: label57
+label64: label63
+label69: label64
+label73: label64
+label77: label69
+label78: label69
+label81: label69
+Dominance Frontier of function main:
+label_entry: null
+label5: label9
+label6: label9
+label9: null
+label11: label15
+label12: label15
+label15: null
+label17: label21
+label18: label21
+label21: null
+label23: label27
+label24: label27
+label27: null
+label29: label33
+label30: label33
+label33: null
+label35: label39
+label36: label39
+label39: null
+label41: label45
+label42: label45
+label45: null
+label47: label51
+label48: label51
+label51: null
+label53: label57
+label54: label57
+label57: null
+label59: label63
+label60: label63
+label63: null
+label64: label64
+label69: label64
+label73: null
+label77: label81
+label78: label81
+label81: label64
+Immediate dominance of function max:
+label_entry: label_entry
+label9: label_entry
+label12: label_entry
+Immediate dominance of function knapsack:
+label_entry: label_entry
+label9: label_entry
+label10: label_entry
+label15: label10
+label16: label10
+label22: label16
+label23: label16
+label26: label16
+label30: label26
+label36: label26
+label41: label30
+label42: label30
+label45: label30
+label46: label36
+label47: label36
+label50: label36
+label54: label50
+label60: label50
+label67: label50
+label78: label67
+label79: label67
+label82: label67
+label88: label82
+label89: label82
+label92: label82
+label96: label60
+label97: label60
+label100: label60
+Immediate dominance of function main:
+label_entry: label_entry
+label5: label_entry
+label6: label_entry
+label9: label_entry
+label11: label9
+label12: label9
+label15: label9
+label17: label15
+label18: label15
+label21: label15
+label23: label21
+label24: label21
+label27: label21
+label29: label27
+label30: label27
+label33: label27
+label35: label33
+label36: label33
+label39: label33
+label41: label39
+label42: label39
+label45: label39
+label47: label45
+label48: label45
+label51: label45
+label53: label51
+label54: label51
+label57: label51
+label59: label57
+label60: label57
+label63: label57
+label64: label63
+label69: label64
+label73: label64
+label77: label69
+label78: label69
+label81: label69
+Loop Detection Result:
+Loop header: label64
+Loop blocks: label64 label81 label77 label69 label78 
+Sub loops: 
+15								15
+0								0

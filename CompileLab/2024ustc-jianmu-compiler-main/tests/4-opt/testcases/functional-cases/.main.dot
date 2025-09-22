@@ -1,0 +1,12 @@
+digraph "CFG for 'main' function" {
+	label="CFG for 'main' function";
+
+	Node0x2c518bb0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{label_entry:\l  br label %label4\l}"];
+	Node0x2c518bb0 -> Node0x2c518d70;
+	Node0x2c518d70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{label4:                                           \l  %op16 = phi i32 [ 0, %label_entry ], [ %op13, %label10 ]\l  %op7 = icmp slt i32 %op16, 10\l  %op8 = zext i1 %op7 to i32\l  %op9 = icmp ne i32 %op8, 0\l  br i1 %op9, label %label10, label %label15\l|{<s0>T|<s1>F}}"];
+	Node0x2c518d70:s0 -> Node0x2c5194e0;
+	Node0x2c518d70:s1 -> Node0x2c519780;
+	Node0x2c5194e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{label10:                                          \l  call void @output(i32 %op16)\l  %op13 = add i32 %op16, 1\l  br label %label4\l}"];
+	Node0x2c5194e0 -> Node0x2c518d70;
+	Node0x2c519780 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#b9d0f970",label="{label15:                                          \l  ret i32 0\l}"];
+}

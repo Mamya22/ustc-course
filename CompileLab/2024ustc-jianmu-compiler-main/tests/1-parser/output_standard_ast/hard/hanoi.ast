@@ -1,0 +1,203 @@
+program
+--fun-declaration: move
+----param: x
+----param: y
+----compound-stmt
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: putint()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: x
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: putch()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 32
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: putint()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: y
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: putch()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 44
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: putch()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 32
+--fun-declaration: hanoi
+----param: n
+----param: one
+----param: two
+----param: three
+----compound-stmt
+------selection-stmt
+--------simple-expression: ==
+----------additive-expression
+------------term
+--------------var: n
+----------additive-expression
+------------term
+--------------num (int): 1
+--------expression-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: move()
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: one
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: three
+--------compound-stmt
+----------expression-stmt
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------call: hanoi()
+--------------------simple-expression
+----------------------additive-expression: -
+------------------------additive-expression
+--------------------------term
+----------------------------var: n
+------------------------term
+--------------------------num (int): 1
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: one
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: three
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: two
+----------expression-stmt
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------call: move()
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: one
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: three
+----------expression-stmt
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------call: hanoi()
+--------------------simple-expression
+----------------------additive-expression: -
+------------------------additive-expression
+--------------------------term
+----------------------------var: n
+------------------------term
+--------------------------num (int): 1
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: two
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: one
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: three
+--fun-declaration: main
+----compound-stmt
+------var-declaration: n
+------expression-stmt
+--------assign-expression
+----------var: n
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: getint()
+------iteration-stmt
+--------simple-expression: >
+----------additive-expression
+------------term
+--------------var: n
+----------additive-expression
+------------term
+--------------num (int): 0
+--------compound-stmt
+----------expression-stmt
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------call: hanoi()
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------call: getint()
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------num (int): 1
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------num (int): 2
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------num (int): 3
+----------expression-stmt
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------call: putch()
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------num (int): 10
+----------expression-stmt
+------------assign-expression
+--------------var: n
+--------------simple-expression
+----------------additive-expression: -
+------------------additive-expression
+--------------------term
+----------------------var: n
+------------------term
+--------------------num (int): 1
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 0

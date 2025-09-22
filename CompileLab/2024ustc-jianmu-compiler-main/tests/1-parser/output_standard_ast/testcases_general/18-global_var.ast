@@ -1,0 +1,16 @@
+program
+--var-declaration: a
+--fun-declaration: main
+----compound-stmt
+------expression-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 10
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: a

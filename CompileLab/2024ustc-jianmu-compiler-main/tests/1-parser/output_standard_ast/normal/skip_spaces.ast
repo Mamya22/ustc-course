@@ -1,0 +1,86 @@
+program
+--fun-declaration: main
+----compound-stmt
+------var-declaration: arr[]
+--------num (int): 100
+------var-declaration: i
+------var-declaration: sum
+------expression-stmt
+--------assign-expression
+----------var: i
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 0
+------expression-stmt
+--------assign-expression
+----------var: sum
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 0
+------iteration-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: getint()
+--------compound-stmt
+----------expression-stmt
+------------assign-expression
+--------------var: arr[]
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: i
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------call: getint()
+----------expression-stmt
+------------assign-expression
+--------------var: i
+--------------simple-expression
+----------------additive-expression: +
+------------------additive-expression
+--------------------term
+----------------------var: i
+------------------term
+--------------------num (int): 1
+------iteration-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: i
+--------compound-stmt
+----------expression-stmt
+------------assign-expression
+--------------var: i
+--------------simple-expression
+----------------additive-expression: -
+------------------additive-expression
+--------------------term
+----------------------var: i
+------------------term
+--------------------num (int): 1
+----------expression-stmt
+------------assign-expression
+--------------var: sum
+--------------simple-expression
+----------------additive-expression: +
+------------------additive-expression
+--------------------term
+----------------------var: sum
+------------------term
+--------------------var: arr[]
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------var: i
+------return-stmt
+--------simple-expression
+----------additive-expression: -
+------------additive-expression
+--------------term
+----------------var: sum
+------------term
+--------------num (int): 79

@@ -1,0 +1,43 @@
+program
+--fun-declaration: addone
+----param: a
+----compound-stmt
+------return-stmt
+--------simple-expression
+----------additive-expression: +
+------------additive-expression
+--------------term
+----------------var: a
+------------term
+--------------num (int): 1
+--fun-declaration: main
+----compound-stmt
+------var-declaration: result
+------expression-stmt
+--------assign-expression
+----------var: result
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: addone()
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------call: addone()
+--------------------------simple-expression
+----------------------------additive-expression
+------------------------------term
+--------------------------------call: addone()
+----------------------------------simple-expression
+------------------------------------additive-expression
+--------------------------------------term
+----------------------------------------call: addone()
+------------------------------------------simple-expression
+--------------------------------------------additive-expression
+----------------------------------------------term
+------------------------------------------------num (int): 1230
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: result

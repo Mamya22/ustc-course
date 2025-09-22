@@ -1,0 +1,25 @@
+program
+--fun-declaration: test
+----param: a
+----compound-stmt
+------return-stmt: void
+--fun-declaration: main
+----compound-stmt
+------var-declaration: a
+------expression-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 10
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: test()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: a
+------return-stmt: void

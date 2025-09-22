@@ -1,0 +1,115 @@
+program
+--var-declaration: GVAR
+--var-declaration: NeverEverDeclareLikeThis
+--var-declaration: GARRAY[]
+----num (int): 2333
+--fun-declaration: MyFuncA
+----param: floatNum
+----param: intNum
+----param: voidNums[]
+----compound-stmt
+------var-declaration: IKnowYouAreVoid
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: MyFuncB()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: IKnowYouAreVoid
+--fun-declaration: MyFuncB
+----compound-stmt
+------var-declaration: IAmVoid[]
+--------num (int): 0
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: MyFuncA()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (float): 0
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 0
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: IAmVoid
+--fun-declaration: main
+----compound-stmt
+------var-declaration: a
+------var-declaration: b
+------var-declaration: c
+------expression-stmt
+--------assign-expression
+----------var: a
+----------assign-expression
+------------var: b
+------------assign-expression
+--------------var: c
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------simple-expression: ==
+----------------------additive-expression
+------------------------term
+--------------------------num (int): 85
+----------------------additive-expression: +
+------------------------additive-expression
+--------------------------term
+----------------------------num (int): 84
+------------------------term
+--------------------------num (float): 0.4
+------selection-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: b
+--------compound-stmt
+----------expression-stmt
+------------assign-expression
+--------------var: GARRAY[]
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------call: MyFuncB()
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: GARRAY[]
+----------------------assign-expression
+------------------------var: c
+------------------------simple-expression: ==
+--------------------------additive-expression
+----------------------------term: *
+------------------------------term
+--------------------------------num (float): 1
+------------------------------num (float): 0.1
+--------------------------additive-expression
+----------------------------term
+------------------------------num (float): 1.1
+--------selection-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: MyFuncC()
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: NotDeclared
+----------compound-stmt
+----------expression-stmt
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (float): 0

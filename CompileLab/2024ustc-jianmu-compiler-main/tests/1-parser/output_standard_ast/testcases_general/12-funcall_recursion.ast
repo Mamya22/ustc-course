@@ -1,0 +1,50 @@
+program
+--fun-declaration: factorial
+----param: a
+----compound-stmt
+------selection-stmt
+--------simple-expression: ==
+----------additive-expression
+------------term
+--------------var: a
+----------additive-expression
+------------term
+--------------num (int): 0
+--------return-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 1
+--------return-stmt
+----------simple-expression
+------------additive-expression
+--------------term: *
+----------------term
+------------------var: a
+----------------call: factorial()
+------------------simple-expression
+--------------------additive-expression: -
+----------------------additive-expression
+------------------------term
+--------------------------var: a
+----------------------term
+------------------------num (int): 1
+--fun-declaration: main
+----compound-stmt
+------var-declaration: result
+------expression-stmt
+--------assign-expression
+----------var: result
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: factorial()
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------num (int): 10
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: result

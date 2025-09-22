@@ -1,0 +1,283 @@
+program
+--var-declaration: x[]
+----num (int): 10
+--fun-declaration: minloc
+----param: a[]
+----param: low
+----param: high
+----compound-stmt
+------var-declaration: i
+------var-declaration: x
+------var-declaration: k
+------expression-stmt
+--------assign-expression
+----------var: k
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: low
+------expression-stmt
+--------assign-expression
+----------var: x
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: a[]
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: low
+------expression-stmt
+--------assign-expression
+----------var: i
+----------simple-expression
+------------additive-expression: +
+--------------additive-expression
+----------------term
+------------------var: low
+--------------term
+----------------num (int): 1
+------iteration-stmt
+--------simple-expression: <
+----------additive-expression
+------------term
+--------------var: i
+----------additive-expression
+------------term
+--------------var: high
+--------compound-stmt
+----------selection-stmt
+------------simple-expression: <
+--------------additive-expression
+----------------term
+------------------var: a[]
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: i
+--------------additive-expression
+----------------term
+------------------var: x
+------------compound-stmt
+--------------expression-stmt
+----------------assign-expression
+------------------var: x
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: a[]
+--------------------------simple-expression
+----------------------------additive-expression
+------------------------------term
+--------------------------------var: i
+--------------expression-stmt
+----------------assign-expression
+------------------var: k
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: i
+----------expression-stmt
+------------assign-expression
+--------------var: i
+--------------simple-expression
+----------------additive-expression: +
+------------------additive-expression
+--------------------term
+----------------------var: i
+------------------term
+--------------------num (int): 1
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------var: k
+--fun-declaration: sort
+----param: a[]
+----param: low
+----param: high
+----compound-stmt
+------var-declaration: i
+------var-declaration: k
+------expression-stmt
+--------assign-expression
+----------var: i
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: low
+------iteration-stmt
+--------simple-expression: <
+----------additive-expression
+------------term
+--------------var: i
+----------additive-expression: -
+------------additive-expression
+--------------term
+----------------var: high
+------------term
+--------------num (int): 1
+--------compound-stmt
+----------var-declaration: t
+----------expression-stmt
+------------assign-expression
+--------------var: k
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------call: minloc()
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------var: a
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------var: i
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------var: high
+----------expression-stmt
+------------assign-expression
+--------------var: t
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: a[]
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------var: k
+----------expression-stmt
+------------assign-expression
+--------------var: a[]
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: k
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: a[]
+----------------------simple-expression
+------------------------additive-expression
+--------------------------term
+----------------------------var: i
+----------expression-stmt
+------------assign-expression
+--------------var: a[]
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: i
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: t
+----------expression-stmt
+------------assign-expression
+--------------var: i
+--------------simple-expression
+----------------additive-expression: +
+------------------additive-expression
+--------------------term
+----------------------var: i
+------------------term
+--------------------num (int): 1
+--fun-declaration: main
+----compound-stmt
+------var-declaration: i
+------expression-stmt
+--------assign-expression
+----------var: i
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 0
+------iteration-stmt
+--------simple-expression: <
+----------additive-expression
+------------term
+--------------var: i
+----------additive-expression
+------------term
+--------------num (int): 10
+--------compound-stmt
+----------expression-stmt
+------------assign-expression
+--------------var: x[]
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: i
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------call: input()
+----------expression-stmt
+------------assign-expression
+--------------var: i
+--------------simple-expression
+----------------additive-expression: +
+------------------additive-expression
+--------------------term
+----------------------var: i
+------------------term
+--------------------num (int): 1
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: sort()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: x
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 0
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 10
+------expression-stmt
+--------assign-expression
+----------var: i
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 0
+------iteration-stmt
+--------simple-expression: <
+----------additive-expression
+------------term
+--------------var: i
+----------additive-expression
+------------term
+--------------num (int): 10
+--------compound-stmt
+----------expression-stmt
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------call: output()
+--------------------simple-expression
+----------------------additive-expression
+------------------------term
+--------------------------var: x[]
+----------------------------simple-expression
+------------------------------additive-expression
+--------------------------------term
+----------------------------------var: i
+----------expression-stmt
+------------assign-expression
+--------------var: i
+--------------simple-expression
+----------------additive-expression: +
+------------------additive-expression
+--------------------term
+----------------------var: i
+------------------term
+--------------------num (int): 1

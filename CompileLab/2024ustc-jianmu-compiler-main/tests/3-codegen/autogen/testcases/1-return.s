@@ -1,0 +1,17 @@
+program
+--fun-declaration: main
+----compound-stmt
+------expression-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: output()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------num (int): 111
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 111

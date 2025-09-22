@@ -1,0 +1,151 @@
+program
+--var-declaration: x[]
+----num (int): 1
+--var-declaration: y[]
+----num (int): 1
+--fun-declaration: gcd
+----param: u
+----param: v
+----compound-stmt
+------selection-stmt
+--------simple-expression: ==
+----------additive-expression
+------------term
+--------------var: v
+----------additive-expression
+------------term
+--------------num (int): 0
+--------return-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: u
+--------return-stmt
+----------simple-expression
+------------additive-expression
+--------------term
+----------------call: gcd()
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------var: v
+------------------simple-expression
+--------------------additive-expression: -
+----------------------additive-expression
+------------------------term
+--------------------------var: u
+----------------------term: *
+------------------------term: /
+--------------------------term
+----------------------------var: u
+--------------------------var: v
+------------------------var: v
+--fun-declaration: funArray
+----param: u[]
+----param: v[]
+----compound-stmt
+------var-declaration: a
+------var-declaration: b
+------var-declaration: temp
+------expression-stmt
+--------assign-expression
+----------var: a
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: u[]
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------num (int): 0
+------expression-stmt
+--------assign-expression
+----------var: b
+----------simple-expression
+------------additive-expression
+--------------term
+----------------var: v[]
+------------------simple-expression
+--------------------additive-expression
+----------------------term
+------------------------num (int): 0
+------selection-stmt
+--------simple-expression: <
+----------additive-expression
+------------term
+--------------var: a
+----------additive-expression
+------------term
+--------------var: b
+--------compound-stmt
+----------expression-stmt
+------------assign-expression
+--------------var: temp
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: a
+----------expression-stmt
+------------assign-expression
+--------------var: a
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: b
+----------expression-stmt
+------------assign-expression
+--------------var: b
+--------------simple-expression
+----------------additive-expression
+------------------term
+--------------------var: temp
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: gcd()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: a
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: b
+--fun-declaration: main
+----compound-stmt
+------expression-stmt
+--------assign-expression
+----------var: x[]
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------num (int): 0
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 90
+------expression-stmt
+--------assign-expression
+----------var: y[]
+------------simple-expression
+--------------additive-expression
+----------------term
+------------------num (int): 0
+----------simple-expression
+------------additive-expression
+--------------term
+----------------num (int): 18
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------call: funArray()
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: x
+----------------simple-expression
+------------------additive-expression
+--------------------term
+----------------------var: y
