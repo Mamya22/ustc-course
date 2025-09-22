@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师教学科研管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let teacherCount = 1; // 初始化老师数量
+
+        function addTeacherField() {
+            teacherCount++;
+            const teacherContainer = document.getElementById('teacherFieldsContainer');
+            const newTeacherField = document.createElement('div');
+            newTeacherField.className = 'mb-3 row'; // 使用row类
+            newTeacherField.innerHTML = `
+                        <div class="col">
+                            <label class="form-label">项目负责人</label>
+                            <input type="text" name="teacher_names" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">负责人工id</label>
+                            <input type="text" name="teacher_ids" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">排名</label>
+                            <input type="number" name="teacher_rank" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="projectAmount" class="form-label">金额（元）</label>
+                            <div class="input-group">
+                                <span class="input-group-text">￥</span>
+                                <input type="number" class="form-control" id="projectAmount" name="teacher_fund" placeholder="请输入金额" min="0" step="0.01">
+                            </div>
+                        </div>           
+        `;
+            teacherContainer.appendChild(newTeacherField);
+        }
+    </script>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 根据结果显示相应的 Toast
+            const result = "{{ result }}";  // 从 Flask 传递的结果
+
+            if (result) {
+                const toastElement = document.getElementById('resultToast');
+                const toastBody = document.getElementById('toastBody');
+
+                    toastBody.textContent = result
+                    toastElement.classList.add('bg-success');
+
+                const toast = new bootstrap.Toast(toastElement);
+                toast.show();  // 显示 Toast
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        
+            const editModal = document.getElementById('editModal');
+            editModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+        
+                // 填充课程基础信息
+                const idInput = document.getElementById('editCourseID');
+                idInput.value = button.getAttribute('data-project-id');
+                idInput.readOnly = true;
+                
+                // document.getElementById('editCourseId').value = button.getAttribute('data-course-id');
+                const nameInput = document.getElementById('editCourseName');
+                nameInput.value = button.getAttribute('data-project-name');
+                nameInput.readOnly = true;
+    
+                const fundInput = document.getElementById('editProjectFund');
+                fundInput.value = button.getAttribute('data-project-fund');
+                fundInput.readOnly = true;
+
+                // 清空旧教师输入框
+                const container = document.getElementById('teacherFieldsContainer');
+                container.innerHTML = "";
+        
+                // 解析教师信息
+                const teachersJson = button.getAttribute('data-teachers');
+                const teachers = JSON.parse(teachersJson || "[]");
+        
+                console.log("解析后的教师数据：", teachers);
+        
+                for (let i = 0; i < teachers.length; i++) {
+                    const div = document.createElement('div');
+                    div.className = "row mb-2";
+                    div.id = `teacher-row-${teachers[i][1]}`;  // 添加唯一id用于后续删除DOM
+                    div.innerHTML = `
+                        <div class="col">
+                            <label class="form-label">项目负责人</label>
+                            <input type="text" name="teacher_names" class="form-control" value="${teachers[i][0]}" required readonly>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">负责人工id</label>
+                            <input type="text" name="teacher_ids" class="form-control" value="${teachers[i][1]}" required readonly>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">排名</label>
+                            <input type="number" name="teacher_rank" class="form-control" value="${teachers[i][2]}" required>
+                        </div>
+                        <div class="col">
+
+                            <label for="projectAmount" class="form-label">金额（元）</label>
+                            <div class="input-group">
+                                <span class="input-group-text">￥</span>
+                                <input type="number" class="form-control" value="${teachers[i][3]}"  id="projectAmount" name="teacher_fund" placeholder="请输入金额" min="0" step="0.01" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button 
+                                type="button" 
+                                class="btn btn-danger btn-sm delete-author-btn" 
+                                data-teacher-id="${teachers[i][1]}" 
+                                data-paper-id="${document.getElementById('editCourseID').value}">
+                                删除
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                }
+    
+            });
+            
+        });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const deletedTeacherIds = new Set();
+
+                document.body.addEventListener("click", function (e) {
+                    if (e.target.classList.contains("delete-author-btn")) {
+                        const button = e.target;
+                        const teacherId = button.getAttribute("data-teacher-id");
+                        const row = document.getElementById(`teacher-row-${teacherId}`);
+                    
+                        // 删除前端显示
+                        if (row) {row.remove();
+                    
+                        // 记录删除的 teacher_id
+                        deletedTeacherIds.add(teacherId);}
+                    
+                        // 更新隐藏字段内容
+                        document.getElementById("deletedTeachers").value = Array.from(deletedTeacherIds).join(",");
+                    }
+                });
+            });
+            </script>
+        
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top">
+                教师科研管理系统
+            </a>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link" href="/paper/show">论文</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/project/show">项目</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/course/show">课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/id/show">综合查询</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <nav aria-label="...">
+                    <ul class="pagination pagination-lg">
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">项目查询</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="/project/add">项目新增</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-body">
+                <form action="/project/search" method="POST" class="row g-3">
+
+                    <div class="col-md-4">
+                        <label for="projectID" class="form-label">项目号</label>
+                        <input type="text" class="form-control" id="projectID" name="project_id"
+                            placeholder="请输入项目号">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="projectName" class="form-label">项目名称</label>
+                        <input type="text" class="form-control" id="projectName" name="project_name"
+                            placeholder="请输入项目名称">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="projectSource" class="form-label">项目来源</label>
+                        <input type="text" class="form-control" id="projectSource" name="project_source"
+                            placeholder="请输入项目来源">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="projectAmount" class="form-label">金额（元）</label>
+                        <div class="input-group">
+                            <span class="input-group-text">￥</span>
+                            <input type="number" class="form-control" id="projectAmount" name="project_amount_min" placeholder="最小金额" min="0" step="0.01">
+                            <span class="input-group-text">至</span>
+                            <span class="input-group-text">￥</span>
+                            <input type="number" class="form-control" id="projectAmount" name="project_amount_max" placeholder="最大金额" min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">按年份查询：</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="project_min_year" placeholder="起始" >
+                            <span class="input-group-text">至</span>
+                            <input type="number" class="form-control" name="project_max_year" placeholder="结束" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="projectType" class="form-label">项目类型</label>
+                        <select class="form-select" id="projectType" name="project_type">
+                            <option selected disabled>请选择</option>
+                            <option value="1">国家级项目</option>
+                            <option value="2">省部级项目</option>
+                            <option value="3">市厅级项目</option>
+                            <option value="4">企业合作项目</option>
+                            <option value="5">其他类型项目</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">老师姓名</label>
+                        <div>
+                            <div class="mb-3 row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="teacherName1" name="teachers"
+                                        placeholder="请输入老师姓名" >
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <button type="button" class="btn btn-secondary" onclick="addTeacherField()">添加老师</button> -->
+                    </div>
+
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">查询</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2>查询结果</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>项目号</th>
+                            <th>项目名称</th>
+                            <th>项目来源</th>
+                            <th>项目类型</th>
+                            <th>总经费</th>
+                            <th>开始年份</th>
+                            <th>结束年份</th>
+                            <th>负责老师</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if projects %}
+                        {% for project in projects %}
+                        <tr>
+                            <td>{{ project.Pro_id }}</td>
+                            <td>{{ project.Pro_name }}</td>
+                            <td>{{ project.Pro_source }}</td>
+                            <td>{{ type[project.Pro_id] }}</td>
+                            <td>{{ project.Pro_money }}</td>
+                            <td>{{ project.Pro_start_year }}</td>
+                            <td>{{ project.Pro_end_year }}</td>
+                            <td>{% for t in teachers[project.Pro_id] %}
+                                {{ t[0] }}{% if not loop.last %}、{% endif %}
+                              {% endfor %}</td>
+                            <td>
+                                <form action="/project/delete" method="POST" style="display:inline;">
+                                    <input type="hidden" name="project_id" value="{{ project.Pro_id }}">
+                                    <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editModal"
+                                    data-project-id="{{ project.Pro_id }}"
+                                    data-project-name="{{ project.Pro_name }}"
+                                    data-project-fund="{{ project.Pro_money }}"
+                                    data-teachers='{{ teachers[project.Pro_id]|tojson}}'>
+                                    编辑
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">没有找到相关项目</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+            <!-- Toast 组件 -->
+            <div class="toast" id="resultToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 20px; right: 20px;">
+                <div class="toast-header">
+                    <strong class="me-auto">提示</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="toastBody">
+                    <!-- 消息内容 -->
+                </div>
+            </div>
+            
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <form class="modal-content" method="POST" id="editForm" action="/project/update">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">编辑项目信息</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editCourseID" class="form-label">项目号</label>
+                        <input type="text" class="form-control" id="editCourseID" name="project_id" >
+                    </div>
+
+                  <div class="mb-3">
+                    <label for="editCourseName" class="form-label">项目名称</label>
+                    <input type="text" class="form-control" id="editCourseName" name="project_name" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="editProjectFund" class="form-label">总经费</label>
+                    <input type="number" class="form-control" id="editProjectFund" name="project_fund" >
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">发表论文信息</label>
+                    <div id="teacherFieldsContainer"></div>
+                    <input type="hidden" id="deletedTeachers" name="deleted_teachers" value="">
+                    
+                    <button type="button" class="btn btn-secondary" onclick="addTeacherField()">添加老师</button>
+                </div>
+                
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                  <button type="submit" class="btn btn-primary">保存修改</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+</body>
+
+</html>

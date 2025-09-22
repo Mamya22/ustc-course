@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师教学科研管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>  
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        // 根据结果显示相应的 Toast
+        const result = "{{ result }}";  // 从 Flask 传递的结果
+        if (result) {
+            const toastElement = document.getElementById('resultToast');
+            const toastBody = document.getElementById('toastBody');
+            if (result === "success") {
+                toastBody.textContent = "删除成功！";
+                toastElement.classList.add('bg-success');
+            } else if(result === "fail"){
+                toastBody.textContent = "删除失败！";
+                toastElement.classList.add('bg-danger');
+            } else{
+                toastBody.textContent = result;
+                toastElement.classList.add('bg-danger');
+            }
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();  // 显示 Toast
+        }
+    });
+</script>
+
+    
+<script>
+    let teacherCount = 1; // 初始化老师数量
+
+    function addTeacherField() {
+        teacherCount++;
+        const teacherContainer = document.getElementById('teacherFieldsContainer');
+        const newTeacherField = document.createElement('div');
+        newTeacherField.className = 'mb-3 row'; // 使用row类
+        newTeacherField.innerHTML = `
+
+            <div class="col">
+                <label for="teacherName${teacherCount}" class="form-label">论文作者</label>
+                    <input type="text" name="teacher_names" class="form-control" id="teacherName${teacherCount}" placeholder="作者姓名" >
+                    </div>
+            <div class="col">
+                <label for="teacherID${teacherCount}" class="form-label">教师工号</label>
+                <input type="text" name="teacher_ids" class="form-control" id="teacherID${teacherCount}" " placeholder="教师工号" >
+            </div>  
+
+            <div class="col">
+                <label for="time${teacherCount}" class="form-label">排名</label>
+                <input type="number" name="teacher_rank" class="form-control" id="time${teacherCount}"  placeholder="排名" >
+            </div>
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="corresponding_author" id="correspondingAuthor${teacherCount}" value="${teacherCount}">
+                    <label class="form-check-label" for="correspondingAuthor${teacherCount}">
+                        是否为通讯作者
+                    </label>
+                </div>
+            </div>
+            
+        `;
+        teacherContainer.appendChild(newTeacherField);
+    }
+  </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editModal = document.getElementById('editModal');
+        editModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+    
+            // 填充课程基础信息
+            const idInput = document.getElementById('editCourseID');
+            idInput.value = button.getAttribute('data-paper-id');
+            idInput.readOnly = true;
+            
+            // document.getElementById('editCourseId').value = button.getAttribute('data-course-id');
+            const nameInput = document.getElementById('editCourseName');
+            nameInput.value = button.getAttribute('data-paper-name');
+            nameInput.readOnly = true;
+
+            // 清空旧教师输入框
+            const container = document.getElementById('teacherFieldsContainer');
+            container.innerHTML = "";
+    
+            // 解析教师信息
+            const teachersJson = button.getAttribute('data-teachers');
+            const teachers = JSON.parse(teachersJson || "[]");
+    
+            console.log("解析后的教师数据：", teachers);
+    
+            for (let i = 0; i < teachers.length; i++) {
+                const div = document.createElement('div');
+                div.className = "row mb-2";
+                div.id = `teacher-row-${teachers[i][1]}`;  // 添加唯一id用于后续删除DOM
+                div.innerHTML = `
+                    <div class="col">
+                        <label class="form-label">论文作者</label>
+                        <input type="text" name="teacher_names" class="form-control" value="${teachers[i][0]}" required readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">教师工号</label>
+                        <input type="text" name="teacher_ids" class="form-control" value="${teachers[i][1]}" required readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">排名</label>
+                        <input type="number" name="teacher_rank" class="form-control" value="${teachers[i][2]}" required>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="corresponding_author" id="correspondingAuthor${i}" value="${i}" ${teachers[i][3] === true ? 'checked' : ''}>
+                            <label class="form-check-label" for="correspondingAuthor${i}">
+                                是否为通讯作者
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button 
+                            type="button" 
+                            class="btn btn-danger btn-sm delete-author-btn" 
+                            data-teacher-id="${teachers[i][1]}" 
+                            data-paper-id="${document.getElementById('editCourseID').value}">
+                            删除
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+
+        });
+        
+    });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.addEventListener("click", function (e) {
+                if (e.target.classList.contains("delete-author-btn")) {
+                    const button = e.target;
+                    const teacherId = button.getAttribute("data-teacher-id");
+                    const paperId = button.getAttribute("data-paper-id");
+                
+                    fetch("/paper/delete_publish", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            teacher_id: teacherId,
+                            paper_id: paperId
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const row = document.getElementById(`teacher-row-${teacherId}`);
+                            if (row) row.remove();
+                        } else {
+                            alert("删除失败：" + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("删除失败", error);
+                        alert("发生错误，请重试");
+                    });
+                }
+            });
+        });
+        </script>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            教师科研管理系统
+          </a>
+          <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+              <a class="nav-link active" href="/paper/show">论文</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/project/show">项目</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/course/show">课程</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/id/show">综合查询</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <nav aria-label="...">
+                  <ul class="pagination pagination-lg">
+                    <li class="page-item active" aria-current="page">
+                      <span class="page-link">论文查询</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="/paper/add">论文新增</a></li>
+                  </ul>
+                </nav>
+            </div>
+            <div class="card-body">
+                <form action="/paper/search" method="POST" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="paperName" class="form-label">论文名称</label>
+                        <input type="text" class="form-control" id="paperName" name="paper_name" placeholder="请输入论文标题" value="{{ request.form.get('paper_name', '') }}">
+                    </div>            
+                    <div class="col-md-4">
+                        <label for="paperName" class="form-label">论文id</label>
+                        <input type="text" class="form-control" id="paperName" name="paper_id" placeholder="请输入论文标题" value="{{ request.form.get('paper_id', '') }}">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">按年份查询：</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="paper_min_year" placeholder="起始" value="{{ request.form.get('paper_min_year', '') }}">
+                            <span class="input-group-text">至</span>
+                            <input type="number" class="form-control" name="paper_max_year" placeholder="结束" value="{{ request.form.get('paper_max_year', '') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="paperType" class="form-label">论文类型</label>
+                        <select class="form-select" id="paperType" name="paper_type">
+                            <option selected disabled>请选择</option>
+                            <option value="1" {% if request.form.get('paper_type') == '1' %}selected{% endif %}>Full Paper</option>
+                            <option value="2" {% if request.form.get('paper_type') == '2' %}selected{% endif %}>Short Paper</option>
+                            <option value="3" {% if request.form.get('paper_type') == '3' %}selected{% endif %}>Poster Paper</option>
+                            <option value="4" {% if request.form.get('paper_type') == '4' %}selected{% endif %}>Demo Paper</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="paperLevel" class="form-label">论文级别</label>
+                        <select class="form-select" id="paper_level" name="paper_level">
+                            <option selected disabled>请选择</option>
+                            <option value="1" {% if request.form.get('paper_level') == '1' %}selected{% endif %}>CCF-A</option>
+                            <option value="2" {% if request.form.get('paper_level') == '2' %}selected{% endif %}>CCF-B</option>
+                            <option value="3" {% if request.form.get('paper_level') == '3' %}selected{% endif %}>CCF-C</option>
+                            <option value="4" {% if request.form.get('paper_level') == '4' %}selected{% endif %}>中文 CCF-A</option>
+                            <option value="5" {% if request.form.get('paper_level') == '5' %}selected{% endif %}>中文 CCF-B</option>
+                            <option value="6" {% if request.form.get('paper_level') == '6' %}selected{% endif %}>无级别</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="teacherName" class="form-label">作者名称</label>
+                        <input type="text" class="form-control" id="teacherName" name="teacher_name" placeholder="作者姓名" value="{{ request.form.get('teacher_name', '') }}">
+                    </div>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">查询</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2>查询结果</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>论文ID</th>
+                            <th>论文名称</th>
+                            <th>来源</th>
+                            <th>年份</th>
+                            <th>类型</th>
+                            <th>级别</th>
+                            <th>作者</th>
+                            <!-- <th>通讯作者</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if papers %}
+                            {% for paper in papers %}
+                            <tr>
+                                <td>{{ paper.P_id }}</td>
+                                <td>{{ paper.P_name }}</td>
+                                <td>{{ paper.P_source }}</td>
+                                <td>{{ paper.P_year }}</td>
+                                <td>{{ type[paper.P_id]}}</td>
+                                <td>{{ level[paper.P_id] }}</td>
+                                <!-- <td>{{ author[paper.P_id] }}</td> -->
+                                <td>
+                                    {% for t in author[paper.P_id] %}
+                                      {{ t[0] }}{% if not loop.last %}、{% endif %}
+                                    {% endfor %}
+                                  </td>
+                                  
+                                <td>
+                                    <form action="/paper/delete" method="POST" style="display:inline;">
+                                        <input type="hidden" name="paper_id" value="{{paper.P_id }}">
+
+                                        <input type="hidden" name="paper" value="{{ papers}}">
+
+                                        <button type="submit" class="btn btn-danger btn-sm" >删除</button>
+                                    </form>
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editModal"
+                                    data-paper-id="{{ paper.P_id }}"
+                                    data-paper-name="{{ paper.P_name }}"
+                                    data-teachers='{{ author[paper.P_id]|tojson}}'>
+                                    编辑
+                                </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">没有找到相关论文</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+        <!-- Toast 组件 -->
+        <div class="toast" id="resultToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 20px; right: 20px;">
+            <div class="toast-header">
+                <strong class="me-auto">提示</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastBody">
+                <!-- 消息内容 -->
+            </div>
+        </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <form class="modal-content" method="POST" action="/paper/update">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">编辑论文信息</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editCourseID" class="form-label">论文号</label>
+                        <input type="text" class="form-control" id="editCourseID" name="paper_id" >
+                    </div>
+
+                  <div class="mb-3">
+                    <label for="editCourseName" class="form-label">论文名称</label>
+                    <input type="text" class="form-control" id="editCourseName" name="paper_name" >
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">发表论文信息</label>
+                    <div id="teacherFieldsContainer"></div>
+                    <button type="button" class="btn btn-secondary" onclick="addTeacherField()">添加老师</button>
+                </div>
+                
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                  <button type="submit" class="btn btn-primary">保存修改</button>
+                </div>
+              </form>
+            </div>
+          </div>
+</body>
+</html>

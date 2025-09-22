@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师教学科研管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        // 根据结果显示相应的 Toast
+        const result = "{{ result }}";  // 从 Flask 传递的结果
+        if (result) {
+            const toastElement = document.getElementById('resultToast');
+            const toastBody = document.getElementById('toastBody');
+            if (result == "success") {
+                toastBody.textContent = "添加成功！";
+                toastElement.classList.add('bg-success');
+            } else {
+                toastBody.textContent = "添加失败！";
+                toastElement.classList.add('bg-danger');
+            }
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();  // 显示 Toast
+        }
+    });
+</script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top">
+                教师科研管理系统
+            </a>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link" href="/paper/show">论文</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/project/show">项目</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/course/show">课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/id/show">综合查询</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <nav aria-label="...">
+                    <ul class="pagination pagination-lg">
+                        <li class="page-item"><a class="page-link" href="/course/show">课程查询</a></li>
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">课程新增</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="/course/add_teach">主讲信息新增</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-body">
+                <form action="/course/add" method="POST" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="courseName" class="form-label">课程名称</label>
+                        <input type="text" class="form-control" id="courseName" name="course_name" value="{{ request.form.get('course_name', '') }}"
+                            placeholder="请输入课程名称" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="courseID" class="form-label">课程号</label>
+                        <input type="text" class="form-control" id="courseID" name="course_id" value="{{ request.form.get('course_id', '') }}" placeholder="请输入课程号" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="courseType" class="form-label">课程性质</label>
+                        <select class="form-select" id="courseType" name="course_type" value="{{ request.form.get('course_type', '') }}">
+                            <option selected disabled>请选择</option>
+                            <option value="1">本科生课程</option>
+                            <option value="2">研究生课程</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="courseTime" class="form-label">总学时：</label>
+                            <input type="number" class="form-control" name="course_time"  id="courseTime" placeholder="总学时" value="{{ request.form.get('course_time', '') }}">
+                    </div>
+
+
+
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- Toast 组件 -->
+    <div class="toast" id="resultToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 20px; right: 20px;">
+        <div class="toast-header">
+            <strong class="me-auto">提示</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toastBody">
+            <!-- 消息内容 -->
+        </div>
+    </div>
+</body>

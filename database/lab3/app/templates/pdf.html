@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>教师信息报告</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #333; padding: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>教师教学科研工作统计</h1>
+    <h2>{{min_year}}-{{max_year}}</h2>
+    <!-- <h2>教师基本信息</h2> -->
+    <!-- 复制 search.html 中的论文表格渲染代码 -->
+    <div class="mt-3">
+        <h2>教师基本信息</h2>
+        <!-- <h4>论文列表</h4> -->
+        <ul class="list-group">
+            {% for info in t_info %}
+            <li class="list-group-item">
+                工号：{{info.T_id}} <br>
+                姓名：{{info.T_name}} <br>
+                性别：{{gender[info.T_gender]}} <br>
+                职称：{{title[info.T_title]}} <br>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="mt-3">
+        <h2>教学情况</h2>
+        <!-- <h4>论文列表</h4> -->
+        <ul class="list-group">
+            {% for c,ct,t in courses %}
+            <li class="list-group-item">
+                课程号：{{c.C_id}} <br>
+                课程名：{{c.C_name}} <br>
+                主讲学时：{{ct.hours}} <br>
+                年份：{{ct.year}} <br>
+                学期：{{course_term[ct.term]}} <br>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="mt-3">
+        <h2>发表论文情况</h2>
+        <!-- <h4>论文列表</h4> -->
+        <ul class="list-group">
+            {% for p,pp,t in papers %}
+            <li class="list-group-item">
+                {{p.P_name}},{{p.P_source}},{{p.P_year}},{{paper_level[p.P_level]}}, 排名第{{pp.rank}}, 通讯作者：{{pp.is_rel}} <br>
+            </li>
+            {% endfor %}
+        </ul>
+    </div> 
+    <div class="mt-3">
+        <h2>承担项目情况</h2>
+        <!-- <h4>论文列表</h4> -->
+        <ul class="list-group">
+            {% for p,pp,t in project %}
+            <li class="list-group-item">
+                {{p.Pro_name}},{{p.Pro_source}},{{project_type[p.Pro_type]}}, {{p.Pro_start_year}}-{{p.Pro_end_year}},总经费：{{p.Pro_money}}, 承担经费：{{pp.fund}} <br>
+            </li>
+            {% endfor %}
+        </ul>
+    </div> 
+
+</body>
+</html>

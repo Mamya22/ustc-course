@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师教学科研管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        // 根据结果显示相应的 Toast
+        const result = "{{ result }}";  // 从 Flask 传递的结果
+        if (result) {
+            const toastElement = document.getElementById('resultToast');
+            const toastBody = document.getElementById('toastBody');
+            // if (result == "success") {
+                toastBody.textContent = result;
+                toastElement.classList.add('bg-success');
+
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();  // 显示 Toast
+        }
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.body.addEventListener("click", function (e) {
+            if (e.target.classList.contains("delete-author-btn")) {
+                const button = e.target;
+                // const teacherId = button.getAttribute("data-teacher-id");
+                // const paperId = button.getAttribute("data-paper-id");
+            
+                fetch("/download", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const row = document.getElementById(`teacher-row-${teacherId}`);
+                        if (row) row.remove();
+                    } else {
+                        alert("删除失败：" + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("删除失败", error);
+                    alert("发生错误，请重试");
+                });
+            }
+        });
+    });
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top">
+                教师科研管理系统
+            </a>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link" href="/paper/show">论文</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/project/show">项目</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/course/show">课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/id/show">综合查询</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <nav aria-label="...">
+                    <ul class="pagination pagination-lg">
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">查询</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-body">
+                <form action="/id/search" method="POST" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="teacherID" class="form-label">教师工号</label>
+                        <input type="text" class="form-control" id="teacherID" name="teacher_id"
+                            placeholder="请输入教师工号" value="{{request.form.get('teacher_id','')}}">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">按年份查询：</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="course_min_year" placeholder="起始" value="{{request.form.get('course_min_year','')}}">
+                            <span class="input-group-text">至</span>
+                            <input type="number" class="form-control" name="course_max_year" placeholder="结束" value="{{request.form.get('course_max_year','')}}">
+                        </div>
+                    </div>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">查询</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h2>查询结果</h2>
+                <!-- 论文表格 -->
+                <div class="mt-4">
+                    <h4>论文列表</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>标题</th>
+                                <!-- <th>作者</th> -->
+                                <th>发表年份</th>
+                                <th>发表源</th>
+                                <th>类型</th>
+                                <th>级别</th>
+                                <th>排名</th>
+                                <th>是否是通讯作者</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if papers %}
+                            {% for paper,pp, t in papers %}
+                            <tr>
+                                <td>{{ paper.P_id }}</td>
+                                <td>{{ paper.P_name }}</td>
+                                <td>{{ paper.P_year }}</td>
+                                <td>{{ paper.P_source }}</td>
+                                <td>{{ paper_type[paper.P_type] }}</td>
+                                <td>{{ paper_level[paper.P_level] }}</td>
+                                <td>{{ pp.rank }}</td>
+                                <td>{{ pp.is_rel }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">没有找到相关论文</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            
+                <!-- 项目标格 -->
+                <div class="mt-4">
+                    <h4>项目列表</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>项目号</th>
+                                <th>名称</th>
+                                <th>来源</th>
+                                <th>类型</th>
+                                <th>总经费</th>
+                                <th>起始年份</th>
+                                <th>结束年份</th>
+                                <th>排名</th>
+                                <th>承担经费</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if projects %} 
+                            {% for project, pp, t in projects %}
+                            <tr>
+                                <td>{{ project.Pro_id }}</td>
+                                <td>{{ project.Pro_name }}</td>
+                                <td>{{ project.Pro_source }}</td>
+                                <td>{{ project_type[project.Pro_type] }}</td>
+                                <td>{{ project.Pro_money}}</td>
+                                <td>{{ project.Pro_start_year}}</td>
+                                <td>{{ project.Pro_end_year}}</td>
+                                <td>{{ pp.rank}}</td>
+                                <td>{{ pp.fund}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">没有找到相关项目</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            
+                <!-- 课程表格 -->
+                <div class="mt-4">
+                    <h4>课程列表</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>课程号</th>
+                                <th>课程名称</th>
+                                <th>学时数</th>
+                                <th>课程性质</th>
+                                <th>年份</th>
+                                <th>学期</th>
+                                <th>承担学时</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if courses %}
+                            {% for course, ct,t in courses %}
+                            <tr>
+                                <td>{{ course.C_id }}</td>
+                                <td>{{ course.C_name }}</td>
+                                <td>{{ course.C_time }}</td>
+                                <td>{{ course_type[course.C_property] }}</td>
+                                <td>{{ ct.year }}</td>
+                                <td>{{ course_term[ct.term] }}</td>
+                                <td>{{ ct.hours }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">没有找到相关课程</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-end mt-3">
+                <a href="/download" class="btn btn-success">下载 PDF</a>
+            </div>
+            
+        </div>
+    </div>
+</body>

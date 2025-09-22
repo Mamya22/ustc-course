@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师教学科研管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let teacherCount = 1; // 初始化老师数量
+
+        function addTeacherField() {
+            teacherCount++;
+            const teacherContainer = document.getElementById('teacherContainer');
+            const newTeacherField = document.createElement('div');
+            newTeacherField.className = 'mb-3 row'; // 使用row类
+            newTeacherField.innerHTML = `
+                        <div class="col">
+                            <label class="form-label">项目负责人</label>
+                            <input type="text" name="teacher_names" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">负责人工id</label>
+                            <input type="text" name="teacher_ids" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">排名</label>
+                            <input type="number" name="teacher_rank" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="money" class="form-label">承担金额（元）</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">￥</span>
+                                        <input type="number" class="form-control" id="money" name="money" placeholder="请输入金额" min="0" step="0.01">
+                                    </div>
+                        </div>     
+        `;
+            teacherContainer.appendChild(newTeacherField);
+        }
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 根据结果显示相应的 Toast
+            const result = "{{ result }}";  // 从 Flask 传递的结果
+
+            if (result) {
+                const toastElement = document.getElementById('resultToast');
+                const toastBody = document.getElementById('toastBody');
+
+                    toastBody.textContent = result
+                    toastElement.classList.add('bg-success');
+
+                const toast = new bootstrap.Toast(toastElement);
+                toast.show();  // 显示 Toast
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top">
+                教师科研管理系统
+            </a>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link" href="/paper/show">论文</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/project/show">项目</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/course/show">课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/id/show">综合查询</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <nav aria-label="...">
+                    <ul class="pagination pagination-lg">
+                        <li class="page-item"><a class="page-link" href="/project/show">项目查询</a></li>
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">项目新增</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-body">
+                <form action="/project/add" method="POST" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="projectID" class="form-label">项目号</label>
+                        <input type="text" class="form-control" id="projectID" name="project_id"
+                            placeholder="请输入项目号">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="projectName" class="form-label">项目名称</label>
+                        <input type="text" class="form-control" id="projectName" name="project_name"
+                            placeholder="请输入项目名称">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">年份：</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="project_start_year" placeholder="起始">
+                            <span class="input-group-text">至</span>
+                            <input type="number" class="form-control" name="project_end_year" placeholder="结束" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="projectSource" class="form-label">项目来源</label>
+                        <input type="text" class="form-control" id="projectSource" name="project_source"
+                            placeholder="请输入项目来源">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="projectType" class="form-label">项目类型</label>
+                        <select class="form-select" id="projectType" name="project_type">
+                            <option selected disabled>请选择</option>
+                            <option value="1">国家级项目</option>
+                            <option value="2">省部级项目</option>
+                            <option value="3">市厅级项目</option>
+                            <option value="4">企业合作项目</option>
+                            <option value="5">其他类型项目</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="projectAmount" class="form-label">金额（元）</label>
+                        <div class="input-group">
+                            <span class="input-group-text">￥</span>
+                            <input type="number" class="form-control" id="projectAmount" name="project_amount" placeholder="请输入金额" min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="col-12">
+
+                        <div id="teacherContainer">
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="addTeacherField()">添加老师</button>
+                    </div>
+
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+            <!-- Toast 组件 -->
+            <div class="toast" id="resultToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 20px; right: 20px;">
+                <div class="toast-header">
+                    <strong class="me-auto">提示</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="toastBody">
+                    <!-- 消息内容 -->
+                </div>
+            </div>
+</body>
